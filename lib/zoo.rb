@@ -42,6 +42,10 @@ class Zoo
             'street_address' => self.street
         }
     end
+
+    def animals_sorted_by_weight
+        @inventory.sort_by { |animal| -animal.weight.to_i }
+    end
 end
 
 require 'pry'; binding.pry
