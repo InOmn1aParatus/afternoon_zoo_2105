@@ -43,4 +43,16 @@ RSpec.describe Zoo do
 
         expect(zoo.address).to eq("2300 Southern Blvd Bronx, NY 10460")
     end
+
+    it 'holds animals in inventory' do
+        zoo = Zoo.new("Bronx Zoo", "2300 Southern Blvd", "Bronx", "NY", "10460")
+        animal_1 = Animal.new("Sea Otter", 10, 25)
+        animal_2 = Animal.new("Red Panda", 5, 70)
+        zoo.add_animal(animal_1)
+        zoo.add_animal(animal_2)
+
+        expect(zoo.inventory).to eq([animal_1, animal_2])
+        expect(zoo.animal_count).to eq(2)
+    end
+
 end
