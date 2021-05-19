@@ -84,4 +84,18 @@ RSpec.describe Zoo do
 
         expect(zoo.total_weight_of_animals).to eq(265)
     end
+
+    it 'provides zoo details' do
+        zoo = Zoo.new("Bronx Zoo", "2300 Southern Blvd", "Bronx", "NY", "10460")
+        animal_1 = Animal.new("Sea Otter", 10, 25)
+        animal_2 = Animal.new("Red Panda", 5, 70)
+        animal_3 = Animal.new("Capybara", 100, 150)
+        animal_4 = Animal.new("Dolphin", 150, 200)
+        zoo.add_animal(animal_1)
+        zoo.add_animal(animal_2)
+        zoo.add_animal(animal_3)
+        zoo.add_animal(animal_4)
+
+        expect(zoo.details).to eq({"total_weight" => 265, "street_address" => "2300 Southern Blvd"})
+    end
 end

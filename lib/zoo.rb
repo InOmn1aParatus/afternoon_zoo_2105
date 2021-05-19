@@ -35,4 +35,13 @@ class Zoo
         @inventory.each { |animal| total_weight += animal.weight.to_i }
         total_weight
     end
+
+    def details
+        details = {
+            'total_weight' => self.total_weight_of_animals,
+            'street_address' => self.street
+        }
+    end
 end
+
+require 'pry'; binding.pry
