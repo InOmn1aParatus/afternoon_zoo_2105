@@ -47,5 +47,3 @@ class Zoo
         @inventory.sort_by { |animal| -animal.weight.to_i }
     end
 end
-
-require 'pry'; binding.pry
