@@ -25,4 +25,14 @@ class Zoo
         @animal_count += 1
         @inventory << animal
     end
+
+    def animals_older_than(age)
+        @inventory.find_all { |animal| animal.age.to_i > age }
+    end
+
+    def total_weight_of_animals
+        total_weight = 0
+        @inventory.each { |animal| total_weight += animal.weight.to_i }
+        total_weight
+    end
 end
