@@ -56,6 +56,7 @@ class Zoo
         @inventory.sort_by { |animal| -animal.weight.to_i }
     end
 
+    # First letter is at index position '0', == first_letter
     def animal_hash
         animal_hash = Hash.new
 
