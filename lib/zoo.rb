@@ -4,8 +4,8 @@ class Zoo
                 :city,
                 :state,
                 :zip_code,
-                :inventory,
-                :animal_count
+                :inventory#,
+                # :animal_count
 
     def initialize(name, street, city, state, zip_code)
         @name = name
@@ -14,32 +14,41 @@ class Zoo
         @state = state
         @zip_code = zip_code
         @inventory = []
-        @animal_count = 0
+        # @animal_count = 0
     end
 
     def address
         "#{@street} #{@city}, #{@state} #{@zip_code}"
     end
 
-    def add_animal(animal)
-        @animal_count += 1
-        @inventory << animal
+    # "Cheaper" than using an array to track them
+    def animal_count
+        @inventory.length
     end
 
+    def add_animal(animal)
+        # @animal_count += 1
+        @inventory.push(animal)
+    end
+
+    # .to_i extracts integers from string, stops at non-integer
     def animals_older_than(age)
         @inventory.find_all { |animal| animal.age.to_i > age }
     end
 
+    # Same .to_i operation
     def total_weight_of_animals
         total_weight = 0
         @inventory.each { |animal| total_weight += animal.weight.to_i }
         total_weight
     end
+    # Could also use total_weight += animal.weight.split(" ").first.to_i
 
+    # Removed 'self.'
     def details
         details = {
-            'total_weight' => self.total_weight_of_animals,
-            'street_address' => self.street
+            'total_weight' => total_weight_of_animals,
+            'street_address' => street
         }
     end
 
