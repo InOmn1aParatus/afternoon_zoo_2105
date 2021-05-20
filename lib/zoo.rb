@@ -56,9 +56,17 @@ class Zoo
         @inventory.sort_by { |animal| -animal.weight.to_i }
     end
 
-    # def animal_hash
-    #     animal_hash = Hash.new{
-    #         |hash, key| 
-    #     }
-    # end
+    def animal_hash
+        animal_hash = Hash.new
+
+        @inventory.each do |animal|
+            first_letter = animal.kind[0]
+            if animal_hash[first_letter]
+                animal_hash[first_letter] << animal
+            else
+                animal_hash[first_letter] = [animal]
+            end
+        end
+        animal_hash
+    end
 end
